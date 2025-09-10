@@ -45,7 +45,18 @@ export class ExpenseListComponent implements OnInit {
   }
 
   deleteExpense(id: number): void {
-    // Lógica de exclusão virá aqui no futuro
-    console.log('Deletar despesa com ID:', id);
+    const confirmation = confirm('Tem certeza que deseja excluir essa despesa?');
+
+    if (confirmation) {
+      this.expenseService.deleteExpense(id).subscribe({
+        next: () => {
+          this.expenses = this.expenses.filter(expense => expense.id !== id);
+        },
+        error: (err) => {
+          console.error('Erro ao excluir essa despesa:', err);
+        }
+      });
+    }
   }
+
 }
