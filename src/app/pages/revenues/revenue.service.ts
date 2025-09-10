@@ -1,30 +1,34 @@
-// src/app/pages/clients/client.service.ts
+// src/app/pages/revenues/revenue.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Product} from './product';
+import { Revenue } from './revenue';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private apiUrl = 'http://localhost:8080/api/products';
+export class RevenueService {
+  private apiUrl = 'http://localhost:8080/api/revenues';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
+  getRevenues(): Observable<Revenue[]> {
+    return this.http.get<Revenue[]>(this.apiUrl);
   }
-  createProduct(product: Partial<Product>): Observable<Product> {
-    return this.http.post<Product>(this.apiUrl, product);
+
+  getRevenueById(id: number): Observable<Revenue> {
+    return this.http.get<Revenue>(`${this.apiUrl}/${id}`);
   }
-  getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+
+  createRevenue(revenue: Partial<Revenue>): Observable<Revenue> {
+    return this.http.post<Revenue>(this.apiUrl, revenue);
   }
-  updateProduct(id: number, product: Partial<Product>): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, product);
+
+  updateRevenue(id: number, revenue: Partial<Revenue>): Observable<Revenue> {
+    return this.http.put<Revenue>(`${this.apiUrl}/${id}`, revenue);
   }
-  deleteProduct(id: number): Observable<void> {
+
+  deleteRevenue(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

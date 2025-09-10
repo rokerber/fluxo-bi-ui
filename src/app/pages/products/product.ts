@@ -1,7 +1,5 @@
-export interface Client {
+export interface Product {
   id: number;
   name: string;
-  contactPerson: string;
-  email: string;
-  phone: string;
+  description: string;
 }

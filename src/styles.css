@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* src/styles.css */
+
+/* ... (outros estilos que possam existir) ... */
+
+/* Estilos padronizados para o estado de lista vazia e carregamento */
+.empty-state, .spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 16px; /* 50px de espaço vertical, 16px de espaço lateral */
+  color: rgba(0, 0, 0, 0.54); /* Cor padrão de texto secundário do Material Design */
+  text-align: center;
+  font-style: italic;
+}

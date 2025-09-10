@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Expense } from './expense';
+
+// Interface para os totais (pode ser útil no futuro)
+export interface DashboardSummary {
+  totalRevenues: number;
+  totalExpenses: number;
+  balance: number;
+}
+
+export interface TimeSeriesData {
+  date: string;
+  value: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExpenseService {
-  private apiUrl = 'http://localhost:8080/api/expenses';
+export class DashboardService {
+  private apiUrl = 'http://localhost:8080/api/dashboard';
 
   constructor(private http: HttpClient) { }
 
-  getExpenses(): Observable<Expense[]> {
-    return this.http.get<Expense[]>(this.apiUrl);
+  getSummary(): Observable<DashboardSummary> {
+    return this.http.get<DashboardSummary>(`${this.apiUrl}/summary`);
   }
-
-  getExpenseById(id: number): Observable<Expense> {
-    return this.http.get<Expense>(`${this.apiUrl}/${id}`);
+  getRevenueHistory(): Observable<TimeSeriesData[]> {
+    return this.http.get<TimeSeriesData[]>(`${this.apiUrl}/revenue-history`);
   }
-
-  createExpense(expense: Partial<Expense>): Observable<Expense> {
-    return this.http.post<Expense>(this.apiUrl, expense);
-  }
-
-  updateExpense(id: number, expense: Partial<Expense>): Observable<Expense> {
-    return this.http.put<Expense>(`${this.apiUrl}/${id}`, expense);
-  }
-
-  deleteExpense(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  getExpenseHistory(): Observable<TimeSeriesData[]> {
+    return this.http.get<TimeSeriesData[]>(`${this.apiUrl}/expense-history`);
   }
 }
