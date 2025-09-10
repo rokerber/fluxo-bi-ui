@@ -1,0 +1,36 @@
+/* Estilo para cada campo do formulário */
+.form-field {
+  width: 100%; /* Faz com que os campos ocupem a largura total do container */
+  margin-bottom: 15px; /* Adiciona um espaço entre os campos */
+}
+
+/* Garante que os botões fiquem alinhados à direita e com espaço */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end; /* Alinha os botões à direita */
+  gap: 8px; /* Adiciona um pequeno espaço entre os botões (alternativa ao margin-left individual) */
+  padding: 16px; /* Adiciona um padding para a área de ações */
+}
+
+/* Estilo para a mensagem de erro */
+.error-message {
+  background-color: #f8d7da; /* Vermelho claro */
+  color: #721c24; /* Vermelho escuro */
+  padding: 12px;
+  margin: 0 16px 16px 16px; /* Ajusta as margens para alinhar com o conteúdo do card */
+  border-radius: 4px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Opcional: Estilo para alinhar os campos em duas colunas, se desejar */
+/* Isso exigiria uma div pai no HTML, como <div class="form-row"> */
+/*
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-field {
+  flex: 1;
+}
+*/

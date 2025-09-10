@@ -1,0 +1,21 @@
+/* Centraliza o cabeçalho e o botão */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Adiciona um espaçamento vertical na linha divisória */
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Centraliza o spinner de carregamento e a mensagem de estado vazio */
+.spinner-container, .empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: grey;
+}

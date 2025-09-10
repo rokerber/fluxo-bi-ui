@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Editar Receita' : 'Nova Receita' }}</mat-card-title>
+  </mat-card-header>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <mat-card-content>
+    <form [formGroup]="revenueForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="description" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Valor (R$)</mat-label>
+        <input matInput formControlName="amount" type="number" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data da Receita</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="revenueDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="clientId" required>
+          <mat-option *ngFor="let client of clients" [value]="client.id">
+            {{ client.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Produto/Serviço</mat-label>
+        <mat-select formControlName="productId" required>
+          <mat-option *ngFor="let product of products" [value]="product.id">
+            {{ product.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button color="warn" routerLink="/revenues">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="revenueForm.invalid">Salvar</button>
+  </mat-card-actions>
+</mat-card>

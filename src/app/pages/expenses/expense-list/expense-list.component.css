@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

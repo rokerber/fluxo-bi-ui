@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Editar Produto' : 'Novo Produto' }}</mat-card-title>
+  </mat-card-header>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <mat-card-content>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nome do Produto</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+          O nome é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button color="warn" routerLink="/products">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="productForm.invalid" style="margin-left: 8px;">Salvar</button>
+  </mat-card-actions>
+</mat-card>

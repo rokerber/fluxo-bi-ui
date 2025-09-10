@@ -1,0 +1,71 @@
+/* --- ESTRUTURA GERAL DO LAYOUT --- */
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #f4f6f8;
+  border-right: 1px solid #e0e0e0;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.content {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* --- ESTILOS FINAIS PARA O MENU LATERAL ELEGANTE --- */
+
+/* Barra de ferramentas DENTRO do menu lateral */
+.sidenav mat-toolbar {
+  background-color: transparent;
+  color: #3f51b5;
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 24px;
+}
+
+/* Estilo geral para todos os itens do menu */
+.mat-mdc-list-item {
+  display: flex; /* NOVO: Garante o alinhamento flexível */
+  align-items: center; /* NOVO: Centraliza verticalmente o ícone e o texto */
+  color: #546e7a;
+  font-family: 'Roboto', sans-serif; /* NOVO: Define a fonte explicitamente */
+  font-size: 14px; /* NOVO: Tamanho de fonte padrão */
+  font-weight: 500;
+  letter-spacing: 0.5px; /* NOVO: Leve espaçamento entre as letras */
+  transition: all 0.2s ease-in-out;
+  margin: 4px 8px; /* Ajusta a margem para dar mais respiro */
+  padding: 0 16px;
+  border-radius: 6px; /* Bordas um pouco mais arredondadas */
+  height: 44px; /* Altura fixa para consistência */
+}
+
+/* NOVO: Adiciona um espaço entre o ícone e o texto */
+.mat-mdc-list-item mat-icon {
+  margin-right: 16px;
+}
+
+/* Efeito ao passar o mouse sobre um item que NÃO está ativo */
+.mat-mdc-list-item:hover:not(.active-list-item) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo principal para o item ATIVO */
+.active-list-item {
+  background-color: #3f51b5;
+  color: white !important;
+}
+
+/* Garante que o ícone dentro do item ativo também fique branco */
+.active-list-item .mat-icon {
+  color: white !important;
+}

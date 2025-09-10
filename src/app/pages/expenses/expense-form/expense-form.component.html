@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Editar Despesa' : 'Nova Despesa' }}</mat-card-title>
+  </mat-card-header>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <mat-card-content>
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="description" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Valor (R$)</mat-label>
+        <input matInput formControlName="amount" type="number" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data de Vencimento</mat-label>
+        <input matInput [matDatepicker]="duePicker" formControlName="dueDate" required>
+        <mat-datepicker-toggle matSuffix [for]="duePicker"></mat-datepicker-toggle>
+        <mat-datepicker #duePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data de Pagamento</mat-label>
+        <input matInput [matDatepicker]="paymentPicker" formControlName="paymentDate">
+        <mat-datepicker-toggle matSuffix [for]="paymentPicker"></mat-datepicker-toggle>
+        <mat-datepicker #paymentPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="isInstallment" class="form-field">
+        Parcelar despesa?
+      </mat-checkbox>
+
+      <mat-form-field *ngIf="expenseForm.get('isInstallment')?.value" appearance="outline" class="form-field">
+        <mat-label>Número de Parcelas</mat-label>
+        <input matInput formControlName="installments" type="number" min="2">
+      </mat-form-field>
+
+      <mat-checkbox formControlName="paid" class="form-field">
+        Marcar como pago
+      </mat-checkbox>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button color="warn" routerLink="/expenses">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="expenseForm.invalid" style="margin-left: 8px;">Salvar</button>
+  </mat-card-actions>
+</mat-card>

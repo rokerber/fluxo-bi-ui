@@ -1,0 +1,26 @@
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-card {
+  flex: 1 1 calc(50% - 20px); /* Ocupa metade da largura, com espaço */
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card.full-width {
+  flex-basis: 100%; /* Ocupa a largura total */
+}
+
+/* Garante que o conteúdo do gráfico ocupe o espaço disponível */
+mat-card-content {
+  flex-grow: 1;
+  display: flex;
+}
+
+ngx-charts-line-chart {
+  width: 100%;
+}
