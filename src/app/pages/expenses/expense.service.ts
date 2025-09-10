@@ -7,7 +7,7 @@ import { Expense } from './expense';
   providedIn: 'root'
 })
 export class ExpenseService {
-  private apiUrl = 'http://localhost:8080/api/expenses';
+  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/expenses';
 
   constructor(private http: HttpClient) { }
 

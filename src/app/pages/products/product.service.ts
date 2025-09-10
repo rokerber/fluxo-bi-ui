@@ -8,7 +8,7 @@ import {Product} from './product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:8080/api/products';
+  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/products';
 
   constructor(private http: HttpClient) { }
 

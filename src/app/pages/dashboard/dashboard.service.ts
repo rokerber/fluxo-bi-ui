@@ -18,7 +18,7 @@ export interface TimeSeriesData {
   providedIn: 'root'
 })
 export class DashboardService {
-  private apiUrl = 'http://localhost:8080/api/dashboard';
+  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/dashboard';
 
   constructor(private http: HttpClient) { }
 

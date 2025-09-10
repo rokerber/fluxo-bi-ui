@@ -8,7 +8,8 @@ import { Client } from './client';
   providedIn: 'root'
 })
 export class ClientService {
-  private apiUrl = 'http://localhost:8080/api/clients';
+  // private apiUrl = 'http://localhost:8080/api/clients';
+  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/clients'
 
   constructor(private http: HttpClient) { }
 

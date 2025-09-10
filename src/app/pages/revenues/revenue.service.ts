@@ -8,7 +8,7 @@ import { Revenue } from './revenue';
   providedIn: 'root'
 })
 export class RevenueService {
-  private apiUrl = 'http://localhost:8080/api/revenues';
+  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/revenues';
 
   constructor(private http: HttpClient) { }
 
