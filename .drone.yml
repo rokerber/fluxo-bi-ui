@@ -10,7 +10,7 @@ steps:
   - name: install-and-test
     image: node:20-alpine
     commands:
-      - yarn install --frozen-lockfile
+      - npm ci
 
   - name: build-and-publish
     image: plugins/docker
@@ -27,11 +27,12 @@ steps:
 
 
   - name: deploy-to-k8s
-    image: alpine/k8s:1.29.2  # Imagem oficial e confiável
+    image: alpine/k8s:1.29.2
     environment:
       KUBE_CONFIG:
-        from_secret: kube_config  # Corrigir o nome do secret também
+        from_secret: kube_config
     commands:
       - mkdir -p ~/.kube
       - echo "$KUBE_CONFIG" > ~/.kube/config
       - kubectl set image deployment/fluxo-bi-ui-deployment fluxo-bi-ui-container=k3rb3rdock/fluxo-bi-ui:${DRONE_COMMIT_SHA:0:8} -n dev
+      - kubectl rollout status deployment/fluxo-bi-ui-deployment -n dev  # Aguarda deploy
