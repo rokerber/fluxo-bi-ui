@@ -3,16 +3,17 @@ import { ClientService } from '../client.service';
 import { Client } from '../client';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AlertService } from '../../../components/services/alert-dialog.service';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { PageHeaderComponent } from '../../../components/page-header/page-header.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-client-list',
   standalone: true,
@@ -36,15 +37,30 @@ export class ClientListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'contactPerson', 'email', 'actions'];
   isLoading = true;
 
-  constructor(private clientService: ClientService, private snackBar: MatSnackBar) {}
+  constructor(
+    private clientService: ClientService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
+    this.loadClients();
+  }
+
+  loadClients(): void {
     this.isLoading = true;
-    this.clientService.getClients().subscribe(data => {
-      this.clients = data;
-      this.isLoading = false;
+    this.clientService.getClients().subscribe({
+      next: (data) => {
+        this.clients = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar clientes:', err);
+        this.isLoading = false;
+        this.alertService.showError('Erro ao carregar clientes. Tente novamente.');
+      }
     });
   }
+
   deleteClient(id: number): void {
     const confirmation = confirm('Tem certeza que deseja excluir este cliente?');
 
@@ -52,32 +68,18 @@ export class ClientListComponent implements OnInit {
       this.clientService.deleteClient(id).subscribe({
         next: () => {
           this.clients = this.clients.filter(client => client.id !== id);
-          this.showSuccess('Cliente excluído com sucesso!');
+          this.alertService.showSuccess('Cliente excluído com sucesso!');
         },
         error: (err) => {
           console.error('Erro ao excluir cliente:', err);
 
-          // Verificar se é erro de integridade referencial
           if (err.status === 400 && err.error?.error === 'REFERENTIAL_INTEGRITY_VIOLATION') {
-            this.showError(err.error.message);
+            this.alertService.showError(err.error.message, 'Não é possível excluir');
           } else {
-            this.showError('Erro ao excluir cliente. Tente novamente.');
+            this.alertService.showError('Erro ao excluir cliente. Tente novamente.');
           }
         }
       });
     }
-  }
-  private showSuccess(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 3000,
-      panelClass: ['success-snackbar']
-    });
-  }
-
-  private showError(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 5000,
-      panelClass: ['error-snackbar']
-    });
   }
 }

@@ -73,7 +73,6 @@ export class ProductListComponent implements OnInit {
         error: (err) => {
           console.error('Erro ao excluir produto:', err);
 
-          // Verificar se é erro de integridade referencial
           if (err.status === 400 && err.error?.error === 'REFERENTIAL_INTEGRITY_VIOLATION') {
             this.alertService.showError(err.error.message, 'Não é possível excluir');
           } else {
@@ -82,8 +81,5 @@ export class ProductListComponent implements OnInit {
         }
       });
     }
-  }
-  testAlert(): void {
-    this.alertService.showSuccess('Produto excluído com sucesso!');
   }
 }
