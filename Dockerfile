@@ -12,6 +12,7 @@ RUN yarn install --frozen-lockfile
 # Agora copia o resto do código fonte
 COPY . .
 
+
 # Roda o build de produção UMA ÚNICA VEZ
 RUN npx ng build --configuration production
 
