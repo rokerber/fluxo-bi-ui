@@ -25,7 +25,6 @@ steps:
       password:
         from_secret: docker_password
 
-
   - name: deploy-to-k8s
     image: alpine/k8s:1.29.2
     environment:
@@ -35,4 +34,4 @@ steps:
       - mkdir -p ~/.kube
       - echo "$KUBE_CONFIG" > ~/.kube/config
       - kubectl set image deployment/fluxo-bi-ui-deployment fluxo-bi-ui-container=k3rb3rdock/fluxo-bi-ui:${DRONE_COMMIT_SHA:0:8} -n dev
-      - kubectl rollout status deployment/fluxo-bi-ui-deployment -n dev  # Aguarda deploy
+
