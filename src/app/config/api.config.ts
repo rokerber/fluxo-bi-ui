@@ -17,6 +17,7 @@ const API_URLS = {
   local: 'http://localhost:8080'
 };
 
+
 export const API_CONFIG = {
   BASE_URL: API_URLS[getCurrentEnvironment()],
 
