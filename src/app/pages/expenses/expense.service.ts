@@ -24,10 +24,10 @@ export class ExpenseService {
   }
 
   updateExpense(id: number, expense: Partial<Expense>): Observable<Expense> {
-    return this.http.put<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`, expense);
+    return this.http.put<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.EXPENSES)}/${id}`, expense);
   }
 
   deleteExpense(id: number): Observable<void> {
-    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.EXPENSES)}/${id}`);
   }
 }

@@ -30,4 +30,5 @@ export class RevenueService {
   deleteRevenue(id: number): Observable<void> {
     return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.REVENUES)}/${id}`);
   }
+
 }

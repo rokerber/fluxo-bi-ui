@@ -46,7 +46,17 @@ export class RevenueListComponent implements OnInit {
   }
 
   deleteRevenue(id: number): void {
-    // A lógica de exclusão virá aqui no futuro
-    console.log('Deletar receita com ID:', id);
+    const confirmation = confirm('Tem certeza que deseja excluir essa receita?');
+
+    if (confirmation) {
+      this.revenueService.deleteRevenue(id).subscribe({
+        next: () => {
+          this.revenues = this.revenues.filter(revenue => revenue.id !== id);
+        },
+        error: (err) => {
+          console.error('Erro ao excluir essa receita:', err);
+        }
+      });
+    }
   }
 }
