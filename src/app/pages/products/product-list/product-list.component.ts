@@ -4,6 +4,8 @@ import { ProductService } from '../product.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Product } from '../product';
+import { AlertService } from '../../../components/services/alert-dialog.service';
+
 
 // Imports do Material
 import { MatTableModule } from '@angular/material/table';
@@ -12,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-list',
@@ -25,8 +26,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatDividerModule,
-    MatSnackBarModule
+    MatDividerModule
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
@@ -39,7 +39,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +56,7 @@ export class ProductListComponent implements OnInit {
       error: (err) => {
         console.error('Erro ao carregar produtos:', err);
         this.isLoading = false;
-        this.showError('Erro ao carregar produtos');
+        this.alertService.showError('Erro ao carregar produtos. Tente novamente.');
       }
     });
   }
@@ -67,47 +67,23 @@ export class ProductListComponent implements OnInit {
     if (confirmation) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
-          console.log('Produto deletado com sucesso');
           this.products = this.products.filter(product => product.id !== id);
-          this.showSuccess('Produto excluído com sucesso!');
+          this.alertService.showSuccess('Produto excluído com sucesso!');
         },
         error: (err) => {
-          console.error('Erro completo:', err);
-          console.log('Status:', err.status);
-          console.log('Error object:', err.error);
-          console.log('Error message:', err.error?.message);
-          console.log('Error type:', err.error?.error);
+          console.error('Erro ao excluir produto:', err);
 
           // Verificar se é erro de integridade referencial
           if (err.status === 400 && err.error?.error === 'REFERENTIAL_INTEGRITY_VIOLATION') {
-            console.log('Mostrando erro de integridade');
-            this.showError(err.error.message);
+            this.alertService.showError(err.error.message, 'Não é possível excluir');
           } else {
-            console.log('Mostrando erro genérico');
-            this.showError('Erro ao excluir produto. Tente novamente.');
+            this.alertService.showError('Erro ao excluir produto. Tente novamente.');
           }
         }
       });
     }
   }
-
-  private showSuccess(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 3000,
-      panelClass: ['success-snackbar']
-    });
-  }
-
-  private showError(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 5000,
-      panelClass: ['error-snackbar']
-    });
-  }
-  testSnackBar(): void {
-    this.showError('Teste de erro');
-    setTimeout(() => {
-      this.showSuccess('Teste de sucesso');
-    }, 1000);
+  testAlert(): void {
+    this.alertService.showSuccess('Produto excluído com sucesso!');
   }
 }

@@ -14,7 +14,7 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 const API_URLS = {
   dev: 'https://wise-hitachi-soc-outer.trycloudflare.com',
   staging: 'https://bool-buf-audience-telecom.trycloudflare.com',
-  local: 'http://localhost:8080'
+  local: 'http://localhost:8181'
 };
 
 
