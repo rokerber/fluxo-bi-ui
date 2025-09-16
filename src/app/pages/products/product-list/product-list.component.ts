@@ -67,16 +67,23 @@ export class ProductListComponent implements OnInit {
     if (confirmation) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
+          console.log('Produto deletado com sucesso');
           this.products = this.products.filter(product => product.id !== id);
           this.showSuccess('Produto excluído com sucesso!');
         },
         error: (err) => {
-          console.error('Erro ao excluir produto:', err);
+          console.error('Erro completo:', err);
+          console.log('Status:', err.status);
+          console.log('Error object:', err.error);
+          console.log('Error message:', err.error?.message);
+          console.log('Error type:', err.error?.error);
 
           // Verificar se é erro de integridade referencial
           if (err.status === 400 && err.error?.error === 'REFERENTIAL_INTEGRITY_VIOLATION') {
+            console.log('Mostrando erro de integridade');
             this.showError(err.error.message);
           } else {
+            console.log('Mostrando erro genérico');
             this.showError('Erro ao excluir produto. Tente novamente.');
           }
         }
@@ -96,5 +103,11 @@ export class ProductListComponent implements OnInit {
       duration: 5000,
       panelClass: ['error-snackbar']
     });
+  }
+  testSnackBar(): void {
+    this.showError('Teste de erro');
+    setTimeout(() => {
+      this.showSuccess('Teste de sucesso');
+    }, 1000);
   }
 }
