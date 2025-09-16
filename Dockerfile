@@ -3,15 +3,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Otimização: Copia primeiro os arquivos de dependência
-COPY package.json yarn.lock ./
-
-# Instala as dependências (só será executado novamente se o package.json ou yarn.lock mudarem)
-RUN yarn install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Agora copia o resto do código fonte
 COPY . .
-
 
 # Roda o build de produção UMA ÚNICA VEZ
 RUN npx ng build --configuration production

@@ -20,7 +20,8 @@ spec:
     spec:
       containers:
         - name: fluxo-bi-ui-container
-          image: k3rb3rdock/fluxo-bi-ui:initial # Uma imagem placeholder inicial
+          image: fluxo-bi-ui:placeholder
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
 ---
@@ -36,5 +37,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30088 # A porta que abriremos para o mundo exterior
+      nodePort: 30095  # Porta livre
   type: NodePort
