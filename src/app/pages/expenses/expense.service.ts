@@ -2,32 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Expense } from './expense';
+import {API_CONFIG, getApiUrl} from '../../config/api.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
-  private apiUrl = 'https://fluxo-bi-api.sp1.br.saveincloud.net.br/api/expenses';
 
   constructor(private http: HttpClient) { }
 
   getExpenses(): Observable<Expense[]> {
-    return this.http.get<Expense[]>(this.apiUrl);
+    return this.http.get<Expense[]>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS));
   }
 
   getExpenseById(id: number): Observable<Expense> {
-    return this.http.get<Expense>(`${this.apiUrl}/${id}`);
+    return this.http.get<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
   }
 
   createExpense(expense: Partial<Expense>): Observable<Expense> {
-    return this.http.post<Expense>(this.apiUrl, expense);
+    return this.http.post<Expense>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS), expense);
   }
 
   updateExpense(id: number, expense: Partial<Expense>): Observable<Expense> {
-    return this.http.put<Expense>(`${this.apiUrl}/${id}`, expense);
+    return this.http.put<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`, expense);
   }
 
   deleteExpense(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
   }
 }
