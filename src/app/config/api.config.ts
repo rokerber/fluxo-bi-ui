@@ -4,7 +4,7 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 
   if (hostname.includes('syndication-thereafter-cement-junior')) {
     return 'staging';
-  } else if (hostname.includes('graphs-semiconductor-thomson-beginning')) {
+  } else if (hostname.includes('safer-rick-scenic-architect')) {
     return 'dev';
   } else {
     return 'local';
@@ -12,8 +12,8 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 };
 
 const API_URLS = {
-  dev: 'https://picking-santa-hunter-suggesting.trycloudflare.com',
-  staging: 'https://calendar-chapter-read-pic.trycloudflare.com',
+  dev: 'https://borough-pediatric-nomination-camp.trycloudflare.com',
+  staging: 'https://anna-couples-proceed-consistently.trycloudflare.com',
   local: 'http://localhost:8080'
 };
 
