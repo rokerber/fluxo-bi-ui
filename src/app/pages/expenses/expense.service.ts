@@ -12,15 +12,15 @@ export class ExpenseService {
   constructor(private http: HttpClient) { }
 
   getExpenses(): Observable<Expense[]> {
-    return this.http.get<Expense[]>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS));
+    return this.http.get<Expense[]>(getApiUrl(API_CONFIG.ENDPOINTS.EXPENSES));
   }
 
   getExpenseById(id: number): Observable<Expense> {
-    return this.http.get<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.get<Expense>(`${getApiUrl(API_CONFIG.ENDPOINTS.EXPENSES)}/${id}`);
   }
 
   createExpense(expense: Partial<Expense>): Observable<Expense> {
-    return this.http.post<Expense>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS), expense);
+    return this.http.post<Expense>(getApiUrl(API_CONFIG.ENDPOINTS.EXPENSES), expense);
   }
 
   updateExpense(id: number, expense: Partial<Expense>): Observable<Expense> {

@@ -12,18 +12,18 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS));
+    return this.http.get<Product[]>(getApiUrl(API_CONFIG.ENDPOINTS.PRODUCTS));
   }
   createProduct(product: Partial<Product>): Observable<Product> {
-    return this.http.post<Product>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS), product);
+    return this.http.post<Product>(getApiUrl(API_CONFIG.ENDPOINTS.PRODUCTS), product);
   }
   getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.get<Product>(`${getApiUrl(API_CONFIG.ENDPOINTS.PRODUCTS)}/${id}`);
   }
   updateProduct(id: number, product: Partial<Product>): Observable<Product> {
-    return this.http.put<Product>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`, product);
+    return this.http.put<Product>(`${getApiUrl(API_CONFIG.ENDPOINTS.PRODUCTS)}/${id}`, product);
   }
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.PRODUCTS)}/${id}`);
   }
 }

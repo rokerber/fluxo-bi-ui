@@ -23,12 +23,12 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   getSummary(): Observable<DashboardSummary> {
-    return this.http.get<DashboardSummary>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/summary`);
+    return this.http.get<DashboardSummary>(`${getApiUrl(API_CONFIG.ENDPOINTS.DASHBOARD)}/summary`);
   }
   getRevenueHistory(): Observable<TimeSeriesData[]> {
-    return this.http.get<TimeSeriesData[]>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/revenue-history`);
+    return this.http.get<TimeSeriesData[]>(`${getApiUrl(API_CONFIG.ENDPOINTS.DASHBOARD)}/revenue-history`);
   }
   getExpenseHistory(): Observable<TimeSeriesData[]> {
-    return this.http.get<TimeSeriesData[]>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/expense-history`);
+    return this.http.get<TimeSeriesData[]>(`${getApiUrl(API_CONFIG.ENDPOINTS.DASHBOARD)}/expense-history`);
   }
 }

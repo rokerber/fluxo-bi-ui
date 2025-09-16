@@ -12,22 +12,22 @@ export class RevenueService {
   constructor(private http: HttpClient) { }
 
   getRevenues(): Observable<Revenue[]> {
-    return this.http.get<Revenue[]>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS));
+    return this.http.get<Revenue[]>(getApiUrl(API_CONFIG.ENDPOINTS.REVENUES));
   }
 
   getRevenueById(id: number): Observable<Revenue> {
-    return this.http.get<Revenue>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.get<Revenue>(`${getApiUrl(API_CONFIG.ENDPOINTS.REVENUES)}/${id}`);
   }
 
   createRevenue(revenue: Partial<Revenue>): Observable<Revenue> {
-    return this.http.post<Revenue>(getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS), revenue);
+    return this.http.post<Revenue>(getApiUrl(API_CONFIG.ENDPOINTS.REVENUES), revenue);
   }
 
   updateRevenue(id: number, revenue: Partial<Revenue>): Observable<Revenue> {
-    return this.http.put<Revenue>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`, revenue);
+    return this.http.put<Revenue>(`${getApiUrl(API_CONFIG.ENDPOINTS.REVENUES)}/${id}`, revenue);
   }
 
   deleteRevenue(id: number): Observable<void> {
-    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.CLIENTS)}/${id}`);
+    return this.http.delete<void>(`${getApiUrl(API_CONFIG.ENDPOINTS.REVENUES)}/${id}`);
   }
 }
