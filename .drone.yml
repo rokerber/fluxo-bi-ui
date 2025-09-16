@@ -10,7 +10,7 @@ steps:
   - name: install-and-test
     image: node:20-alpine
     commands:
-      - npm ci
+      - yarn install --frozen-lockfile
 
   - name: build-and-publish
     image: plugins/docker
