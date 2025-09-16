@@ -37,5 +37,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30095  # Porta livre
+      nodePort: 30098  # Porta livre
   type: NodePort
