@@ -4,7 +4,7 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 
   if (hostname.includes('syndication-thereafter-cement-junior')) {
     return 'staging';
-  } else if (hostname.includes('washing-news-bedford-reviewer')) {
+  } else if (hostname.includes('casual-alarm-lbs-oral')) {
     return 'dev';
   } else {
     return 'local';
@@ -12,8 +12,8 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 };
 
 const API_URLS = {
-  dev: 'https://wise-hitachi-soc-outer.trycloudflare.com',
-  staging: 'https://bool-buf-audience-telecom.trycloudflare.com',
+  dev: 'https://assign-humidity-districts-apollo.trycloudflare.com',
+  staging: 'https://sonic-enforcement-alpine-hydrocodone.trycloudflare.com',
   local: 'http://localhost:8181'
 };
 
