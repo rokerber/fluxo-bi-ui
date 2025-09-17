@@ -14,7 +14,7 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 const API_URLS = {
   dev: 'https://assign-humidity-districts-apollo.trycloudflare.com',
   staging: 'https://sonic-enforcement-alpine-hydrocodone.trycloudflare.com',
-  local: 'http://localhost:8181'
+  local: 'http://localhost:8080'
 };
 
 
