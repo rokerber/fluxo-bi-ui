@@ -39,13 +39,5 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0"
-  },
-  "overrides": {
-    "@angular/animations": "20.2.2",
-    "@angular/common": "20.2.2",
-    "@angular/compiler": "20.2.2",
-    "@angular/core": "20.2.2",
-    "@angular/platform-browser": "20.2.2",
-    "@angular/platform-browser-dynamic": "20.2.2"
   }
 }
