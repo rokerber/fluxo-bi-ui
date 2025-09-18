@@ -310,7 +310,7 @@
     yargs "18.0.0"
     zod "3.25.76"
 
-"@angular/common@^20.0.0 || ^21.0.0", "@angular/common@>=19.0.0", "@angular/common@20.2.2":
+"@angular/common@20.2.2":
   version "20.2.2"
   resolved "https://registry.npmjs.org/@angular/common/-/common-20.2.2.tgz"
   integrity sha512-8i7cytly2h1sgoaEx3+H7/Xrq2KEBnAi0nDG1URv0esmyeMYJ2kycBXF2EDbnbzBhZAPw7++kTf5jng+bhTsiw==
@@ -331,14 +331,14 @@
     tslib "^2.3.0"
     yargs "^18.0.0"
 
-"@angular/compiler@^20.0.0", "@angular/compiler@20.2.2":
+"@angular/compiler@20.2.2":
   version "20.2.2"
   resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-20.2.2.tgz"
   integrity sha512-gHZFSAVVzH/rOvZGglf5AGkk6iQgZXqgFzoThSXe+Do4XIkdeaZPVgc/3AmoHk50gAD85C90eXSjlvp/N1djRg==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^20.0.0", "@angular/core@^20.0.0 || ^21.0.0", "@angular/core@>=19.0.0", "@angular/core@20.2.2":
+"@angular/core@20.2.2":
   version "20.2.2"
   resolved "https://registry.npmjs.org/@angular/core/-/core-20.2.2.tgz"
   integrity sha512-FZFVh2pI4mI7rr8tTVfrC2c1yOjgTrZy3BFaLSTArS4TgNxy30fLKQ9w3JkuxfllDSckPLyft/EaKcW1pxgHAw==
@@ -369,7 +369,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^20.0.0", "@angular/platform-browser@^20.0.0 || ^21.0.0", "@angular/platform-browser@>=19.0.0", "@angular/platform-browser@20.2.2":
+"@angular/platform-browser@20.2.2":
   version "20.2.2"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-20.2.2.tgz"
   integrity sha512-Il0AibFdZPK4PRhnMomURld/9k0+lJElO1/+lSeYqlOYFcIV8BUrsBsWcDYgDMs71eJiw63EReffADvpEQI4WA==
@@ -1220,15 +1220,7 @@
     "@inquirer/type" "^3.0.8"
     yoctocolors-cjs "^2.1.2"
 
-"@inquirer/confirm@^5.1.14":
-  version "5.1.18"
-  resolved "https://registry.npmjs.org/@inquirer/confirm/-/confirm-5.1.18.tgz"
-  integrity sha512-MilmWOzHa3Ks11tzvuAmFoAd/wRuaP3SwlT1IZhyMke31FKLxPiuDWcGXhU+PKveNOpAc4axzAgrgxuIJJRmLw==
-  dependencies:
-    "@inquirer/core" "^10.2.2"
-    "@inquirer/type" "^3.0.8"
-
-"@inquirer/confirm@5.1.14":
+"@inquirer/confirm@^5.1.14", "@inquirer/confirm@5.1.14":
   version "5.1.14"
   resolved "https://registry.npmjs.org/@inquirer/confirm/-/confirm-5.1.14.tgz"
   integrity sha512-5yR4IBfe0kXe59r1YCTG8WXkUbl7Z35HK87Sw+WUyGD8wNUx7JvY7laahzeytyE1oLn74bQnL7hstctQxisQ8Q==
@@ -3535,7 +3527,7 @@ faye-websocket@^0.11.3:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fdir@^6.4.4, fdir@^6.4.6, fdir@^6.5.0:
+fdir@^6.4.4, fdir@^6.4.6:
   version "6.5.0"
   resolved "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz"
   integrity sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==
@@ -6541,15 +6533,7 @@ thunky@^1.0.2:
   resolved "https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
 
-tinyglobby@^0.2.12:
-  version "0.2.15"
-  resolved "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.15.tgz"
-  integrity sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==
-  dependencies:
-    fdir "^6.5.0"
-    picomatch "^4.0.3"
-
-tinyglobby@^0.2.14, tinyglobby@0.2.14:
+tinyglobby@^0.2.12, tinyglobby@^0.2.14, tinyglobby@0.2.14:
   version "0.2.14"
   resolved "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.14.tgz"
   integrity sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==
