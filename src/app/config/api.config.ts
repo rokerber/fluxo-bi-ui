@@ -14,7 +14,7 @@ const getCurrentEnvironment = (): 'dev' | 'staging' | 'local' => {
 const API_URLS = {
   dev: 'https://assign-humidity-districts-apollo.trycloudflare.com',
   staging: 'https://sonic-enforcement-alpine-hydrocodone.trycloudflare.com',
-  local: 'ttps://fluxo-bi-api.sp1.br.saveincloud.net.br'
+  local: 'https://fluxo-bi-api.sp1.br.saveincloud.net.br'
 };
 
 
