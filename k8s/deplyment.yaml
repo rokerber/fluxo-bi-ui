@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxo-bi-ui-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fluxo-bi-ui
+  template:
+    metadata:
+      labels:
+        app: fluxo-bi-ui
+    spec:
+      containers:
+        - name: fluxo-bi-ui
+          image: IMAGEM_A_SER_SUBSTITUIDA # A pipeline vai substituir isto
+          ports:
+            - containerPort: 80 # O Nginx dentro do container expõe a porta 80
